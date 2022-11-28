@@ -1,0 +1,96 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar-track {
+    background-color:  rgb(46, 43, 43);
+}
+::-webkit-scrollbar {
+    width: 1px;
+    background:  rgb(46, 43, 43);
+}
+::-webkit-scrollbar-thumb {
+    background:  rgb(46, 43, 43);
+}
+#CarouselOne{
+    margin-top: 30px;
+}
+.box-group{
+    position: relative;
+    height: 410px;
+    overflow-x:scroll;
+    scroll-behavior: smooth;
+    transition: scroll .2s;
+    -webkit-transition: scroll .2s;
+    -moz-transition: scroll .2s;
+    -ms-transition: scroll .2s;
+    -o-transition: scroll .2s;
+}
+.card-group-carousel{
+    position: relative;
+    display: flex;
+    width: 1300px;
+    height: 380px;
+    justify-content: space-around;
+    background-color: rgb(46, 43, 43);
+    overflow-x:scroll;
+}
+.card{
+    display: block;
+    border: 1px solid rgb(99, 99, 99);
+    cursor: pointer;
+    width: 250px;
+    height: 350px;
+    margin: 10px;
+    background-color: rgb(114, 111, 111);
+    transition: all .4s;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -ms-transition: all .4s;
+    -o-transition: all .4s;
+    z-index: 0;
+}
+.card:hover{
+    margin: 5px;
+    padding: 5px;
+}
+.carousel-control-box{
+    display: grid;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100px;
+    z-index: 10;
+    align-items: center;
+}
+.carousel-control{
+    color: rgb(182, 179, 179);
+    font-size: 54pt;
+    cursor: pointer;
+    text-align: center;
+    transition: color .4s;
+    -webkit-transition: color .4s;
+    -moz-transition: color .4s;
+    -ms-transition: color .4s;
+    -o-transition: color .4s;
+}
+.carousel-box-next{
+    position: fixed;
+    left: 0px;
+}
+.carousel-box-prev{
+    position: fixed;
+    left: 0px;
+}
+.carousel-control:hover{
+    color: black;
+}
+.carousel-control-prev{
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
