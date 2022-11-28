@@ -1,13 +1,42 @@
 
+
+
+<p class="fs-5 text-center text-white">Filmes mais populares nos cinemas</p>
 <div class="box-group">
     <div class="card-group-carousel" id="CarouselOne">
-    
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+        
+        {{#each ThumbMoviesPopular}}
+            <div class="card" style="background: url({{this}}); background-size: cover;"></div>
+        {{/each}}
+  
+        <div class="carousel-control-box carousel-box-next">
+            <span class="carousel-control carousel-control-next">&#10148;</span>
+        </div>
+        <div class="carousel-control-box carousel-box-prev">
+            <span class="carousel-control carousel-control-prev">&#10148;</span>
+        </div>
+           
+    </div>
+</div>
+<hr>
+<p class="fs-5 text-center text-white">Filmes mais populares em Casa</p>
+<div class="box-group">
+    <div class="card-group-carousel" id="CarouselTwo">
 
+       <!-- 
+        {{#each ThumbMoviesHome}}
+            <div class="card" style="background: url({{this}}); background-size: cover;"></div>
+        {{/each}}
+        -->
+        <div class="card" ></div>
+        <div class="card" ></div>
+        <div class="card" ></div>
+        <div class="card" ></div>
+        <div class="card" ></div>
+        <div class="card" ></div>
+        <div class="card" ></div>
+        <div class="card" ></div>
+        <div class="card" ></div>
         <div class="carousel-control-box carousel-box-next">
             <span class="carousel-control carousel-control-next">&#10148;</span>
         </div>

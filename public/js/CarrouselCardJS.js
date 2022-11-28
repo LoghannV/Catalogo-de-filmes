@@ -23,7 +23,7 @@ window.addEventListener('load',function(){
 
 let proximo = 0
 btn_next.addEventListener('click',function(){
-    proximo = window.innerWidth+proximo<=1600? proximo+=250: 0
+    proximo = window.innerWidth+proximo<=Cards.length*260? proximo+=250: 0
     BoxGroup.scroll(proximo,0)
 })
 let anterior = 400
