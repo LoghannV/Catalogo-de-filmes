@@ -19,9 +19,13 @@ html{
 #CarouselOne{
     margin-top: 30px;
 }
+#CarouselTwo{
+    margin-top: 30px;
+}
 .box-group{
     position: relative;
     height: 410px;
+    overflow-y: hidden;
     overflow-x:scroll;
     scroll-behavior: smooth;
     transition: scroll .2s;
@@ -37,6 +41,7 @@ html{
     height: 380px;
     justify-content: space-around;
     background-color: rgb(46, 43, 43);
+    overflow-y: hidden;
     overflow-x:scroll;
 }
 .card{
@@ -64,13 +69,14 @@ html{
 .carousel-control-box{
     display: grid;
     background-color: rgba(0, 0, 0, 0.2);
-    width: 100px;
+    width: 70px;
     z-index: 10;
     align-items: center;
 }
 .carousel-control{
     color: rgb(182, 179, 179);
-    font-size: 54pt;
+    font-size: 34pt;
+    padding: 15px;
     cursor: pointer;
     text-align: center;
     transition: color .4s;
@@ -80,12 +86,12 @@ html{
     -o-transition: color .4s;
 }
 .carousel-box-next{
-    position: fixed;
+    position:static;
     left: 0px;
 }
 .carousel-box-prev{
-    position: fixed;
-    left: 0px;
+    position:static;
+    left: 4px;
 }
 .carousel-control:hover{
     color: black;
