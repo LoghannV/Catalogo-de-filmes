@@ -24,8 +24,6 @@ async function GetMoviesRotten(select){
 }
 
 
-
-
 app.engine('handlebars', handlebars.engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');

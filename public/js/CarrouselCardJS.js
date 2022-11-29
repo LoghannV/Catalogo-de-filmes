@@ -2,78 +2,97 @@
 let btn_next = document.querySelectorAll('.carousel-box-next')
 let btn_prev = document.querySelectorAll('.carousel-box-prev')
 let CarouselOne = document.getElementById("CarouselOne")
+let CarouselTwo = document.getElementById("CarouselTwo")
 let BoxGroup = document.querySelectorAll('.box-group')
-let CardGroupCarousel = document.querySelector('.card-group-carousel')
-let proximo = 0
+let CardGroupCarouselAll = document.querySelectorAll('.card-group-carousel')
 let anterior = 400
 
 let Cards = document.querySelectorAll('.card')
 
-const cssGroupCard = window.getComputedStyle(CardGroupCarousel)
+
 
 
 //Atribuição das funções
 window.addEventListener('load',function(){
-
-    /*let alturaCarouselOne = CarouselOne.style.top
-
-    /*btn_next[0].style.top = alturaCarouselOne+"px"
-    btn_prev[0].style.top = alturaCarouselOne+"px"
-    btn_next[0].style.left = (window.innerWidth-100)+"px"
-    btn_next[0].style.height = cssCarousel.height
-    btn_prev[0].style.height = cssCarousel.height*/
-
-    DimensionalButtonControl(btn_prev[0],btn_next[0],CarrouselOne)
     
-    const CardGroupOne = DimensionalCards("#CarrouselOne")
+    DimensionalButtonControl(btn_prev[0],btn_next[0],CarouselOne)
+    DimensionalCards("#CarouselOne",CardGroupCarouselAll[0])
+    DimensionalCarousel(BoxGroup[0],CarouselOne)
 
-    DimensionalCarrousel(BoxGroup[0],CarrouselOne)
+    DimensionalButtonControl(btn_prev[1],btn_next[1],CarouselTwo)
+    DimensionalCards('#CarouselTwo',CardGroupCarouselAll[1])
+    DimensionalCarousel(BoxGroup[1],CarouselTwo)
  
 })
-
-
-
+//BUTTON CARROUSEL ONE
 btn_next[0].addEventListener('click',function(){
-    ButtonNext(CardGroupOne,BoxGroup[0])
+    ButtonNextCarousel("#CarouselOne",BoxGroup[0],this)
 })
-
-
-
 btn_prev[0].addEventListener('click',function(){ 
-    if(proximo>=250){
-        BoxGroup.scroll((proximo-anterior),0)
-        proximo = proximo-anterior
-    }else{
-        BoxGroup.scroll(0,0)
-    }
+    ButtonPrevCarousel("#CarouselOne",BoxGroup[0],this)
 })
 
-function DimensionalButtonControl(ButtonPrev,ButtonNext,Carrousel){
-    let alturaCarouselOne = Carrousel.style.top
+//BUTON CAROUSEL TWO
+btn_next[1].addEventListener('click',function(){
+    ButtonNextCarousel("#CarouselTwo",BoxGroup[1],this)
+})
+btn_prev[1].addEventListener('click',function(){ 
+    ButtonPrevCarousel("#CarouselTwo",BoxGroup[1],this)
+})
+
+
+//FUNÇÕES
+
+function DimensionalButtonControl(ButtonPrev,ButtonNext,Carousel){
+    let alturaCarouselOne = Carousel.style.top
     const cssCarousel = window.getComputedStyle(Carousel)
-        
-    alert('passou aqui 1')
+
     ButtonNext.style.top = alturaCarouselOne+"px"
     ButtonPrev.style.top = alturaCarouselOne+"px"
     ButtonNext.style.left = (window.innerWidth-100)+"px"
     ButtonNext.style.height = cssCarousel.height
     ButtonPrev.style.height = cssCarousel.height
+}
+function DimensionalCards(CarouselID,GroupCard){
+    let CardGroup = document.querySelectorAll(CarouselID+' .card').length
+    GroupCard.style.width = CardGroup*260+"px"
+
     
-    alert('Realizado dimensionamento')
 }
-function DimensionalCards(CarrouselID){
-    let CardGroup = document.querySelectorAll(CarrouselID+' .card').length
+function ButtonNextCarousel(CarouselID,BoxGroup,Button){
+    let CardGroup = document.querySelectorAll(CarouselID+' .card').length
+    let DataNext = Button.getAttribute('data-next')
+    if(window.innerWidth+parseInt(DataNext)<=CardGroup*260){
+        BoxGroup.scroll(DataNext,0)
+        Button.setAttribute('data-next',parseInt(DataNext)+400)
+    }else{
+        BoxGroup.scroll(0,0)
+        Button.setAttribute('data-next',400)
+    }
 
-    CardGroupCarousel.style.width = Cards.length*260+"px"
+}
+function ButtonPrevCarousel(CarouselID,BoxGroup,Button){
+  
+    let DataNext = parseInt(document.querySelectorAll(CarouselID+" .carousel-box-next")[0].getAttribute('data-next'))
+    let DataPrev = Button.getAttribute('data-prev')
+    if(DataNext>400){
+        if(DataNext-DataPrev == 400){
+            BoxGroup.scroll(0,0)
+                    
+         }else{
+            DataNext =DataNext-parseInt(DataPrev)
+            document.querySelectorAll(CarouselID+" .carousel-box-next")[0].setAttribute('data-next', DataNext)
+            BoxGroup.scroll(DataNext,0)
+            
+        }
+    }else{
+    
+        BoxGroup.scroll(0,0)
+    }
 
-    return CardGroup
 }
-function ButtonNextCarrousel(CardGroup,BoxGroup){
-    proximo = window.innerWidth+proximo<=CardGroup.length*260? proximo+=250: 0
-    BoxGroup.scroll(proximo,0)
-}
-function DimensionalCarrousel(Box,Carrousel){
-    let alturaCarouselOne = Carrousel.style.top
+function DimensionalCarousel(Box,Carousel){
+    let alturaCarouselOne = Carousel.style.top
     Box.style.top = alturaCarouselOne+"px"
     Box.style.width = this.window.innerWidth+"px"
 }
